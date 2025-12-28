@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Drink {
+  id             String   @id @default(uuid())
+  category       String
+  name           String
+  imageUrl       String
+  customExamples String   // JSON配列として保存
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
