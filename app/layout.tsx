@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "カスタムドリンクメニュー",
-  description: "スターバックス風のカスタムドリンクメニューアプリ",
+  description: "スターバックスのカスタムドリンクメニューアプリ",
 };
 
 export default function RootLayout({
