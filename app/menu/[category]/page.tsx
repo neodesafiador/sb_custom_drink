@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import { CATEGORY_COLORS } from '@/lib/categories';
 import { notFound } from 'next/navigation';
+import 'animate.css';
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -62,11 +63,15 @@ export default async function MenuPage({ params }: PageProps) {
 
         {/* ドリンク一覧 */}
         <div className="grid grid-cols-2 gap-4">
-          {drinks.map((drink) => (
+          {drinks.map((drink, index) => (
             <Link
               key={drink.id}
               href={`/drink/${drink.id}`}
-              className="block group"
+              className="block group animate__animated animate__fadeInRight"
+              style={{
+                animationDelay: `${index * 0.2}s`,
+                animationFillMode: 'both',
+              }}
             >
               <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl">
                 <div className="aspect-square relative bg-gray-100">
