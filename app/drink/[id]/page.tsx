@@ -1,20 +1,27 @@
+export const revalidate = 60;
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import { CATEGORY_COLORS } from '@/lib/categories';
 import type { CustomExample } from '@/lib/types';
+import { cache } from 'react';
 
 type PageProps = {
   params: Promise<{ id: string }>;
 };
 
+const getDrink = cache(async (id: string) => {
+  return prisma.drink.findUnique({
+    where: { id },
+  });
+});
+
 export default async function DrinkDetailPage({ params }: PageProps) {
   const { id } = await params;
 
-  const drink = await prisma.drink.findUnique({
-    where: { id },
-  });
+  const drink = await getDrink(id);
 
   if (!drink) {
     notFound();

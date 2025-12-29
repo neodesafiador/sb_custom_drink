@@ -1,27 +1,29 @@
+export const revalidate = 60;
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import { CATEGORY_COLORS } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import 'animate.css';
+import { cache } from 'react';
 
 type PageProps = {
   params: Promise<{ category: string }>;
 };
 
+const getDrinksByCategory = cache(async (category: string) => {
+  return prisma.drink.findMany({
+    where: { category },
+    orderBy: { createdAt: 'desc' },
+  });
+});
+
 export default async function MenuPage({ params }: PageProps) {
   const { category } = await params;
   const decodedCategory = decodeURIComponent(category);
 
-  // カテゴリに属するドリンクを取得
-  const drinks = await prisma.drink.findMany({
-    where: {
-      category: decodedCategory,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
+  const drinks = await getDrinksByCategory(decodedCategory);
 
   if (drinks.length === 0) {
     notFound();
