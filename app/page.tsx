@@ -1,5 +1,11 @@
 import Link from 'next/link';
 import { CATEGORIES, CATEGORY_COLORS } from '@/lib/categories';
+import { Great_Vibes } from 'next/font/google';
+
+const greatVibes = Great_Vibes({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 export default function Home() {
   return (
@@ -7,8 +13,18 @@ export default function Home() {
       <div className="max-w-md mx-auto px-4 py-8">
         {/* ヘッダー */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-starbucks-green mb-2">
-            カスタムドリンク
+          <h1 className="flex justify-center items-end gap-2">
+            {/* Starbucks */}
+            <span
+              className={`${greatVibes.className} text-5xl text-green-800 drop-shadow`}
+            >
+              Starbucks
+            </span>
+
+            {/* UTAZU */}
+            <span className="text-sm text-green-700 tracking-widest mb-1">
+              UTAZU
+            </span>
           </h1>
           <p className="text-gray-600">お好みのカテゴリを選んでください</p>
         </div>
