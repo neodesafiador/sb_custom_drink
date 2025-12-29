@@ -51,13 +51,15 @@ export default async function MenuPage({ params }: PageProps) {
             </svg>
             カテゴリに戻る
           </Link>
-          <div
-            className={`inline-block px-4 py-2 rounded-full border-2 ${
-              CATEGORY_COLORS[decodedCategory as keyof typeof CATEGORY_COLORS] ||
-              'bg-gray-100 text-gray-800 border-gray-200'
-            }`}
-          >
-            <h1 className="text-xl font-bold">{decodedCategory}</h1>
+          <div className="mt-4 flex justify-center">
+            <div
+              className={`inline-block px-4 py-2 rounded-full border-2 ${
+                CATEGORY_COLORS[decodedCategory as keyof typeof CATEGORY_COLORS] ||
+                'bg-gray-100 text-gray-800 border-gray-200'
+              }`}
+            >
+              <h1 className="text-xl font-bold">{decodedCategory}</h1>
+            </div>
           </div>
         </div>
 
