@@ -17,7 +17,7 @@
 - **フレームワーク**: Next.js 15 (App Router)
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS
-- **データベース**: SQLite
+- **データベース**: PostgreSQL
 - **ORM**: Prisma 5
 - **QRコード**: qrcode
 
@@ -40,7 +40,7 @@ cp .env.example .env
 `.env` の内容を必要に応じて編集してください：
 
 ```env
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/customdrink"
 ADMIN_PASSWORD="admin123"
 NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 ```
@@ -166,26 +166,9 @@ model Drink {
    - `NEXT_PUBLIC_BASE_URL`（本番URL）
 3. デプロイ
 
-**注意**: SQLiteは本番環境では推奨されません。PostgreSQLなどに移行することをおすすめします。
-
 ## カスタマイズ
 
 ### カテゴリの追加
 
 `lib/categories.ts` を編集してカテゴリを追加できます。
 
-### 画像のアップロード対応
-
-現在は画像URLを手動入力していますが、以下のサービスで画像アップロードを実装できます：
-
-- Cloudinary
-- Uploadcare
-- Vercel Blob
-
-## ライセンス
-
-MIT
-
-## 開発者
-
-このアプリは学習・デモ目的で作成されました。
