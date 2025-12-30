@@ -48,6 +48,26 @@ export default function Home() {
           ))}
         </div>
 
+        <div className="mt-8 space-y-1 text-xs text-gray-400 leading-relaxed">
+          <p className="flex">
+            <span className="mr-1">※</span>
+            <span>店舗内の参考情報（非公式）</span>
+          </p>
+
+          <p className="flex">
+            <span className="mr-1">※</span>
+            <span>
+              価格・栄養・アレルゲンの詳細は、公式サイトまたは店頭にてご確認ください。
+            </span>
+          </p>
+
+          <p className="flex">
+            <span className="mr-1">※</span>
+            <span>
+              混雑時や在庫状況により、注文を承れない場合があります。
+            </span>
+          </p>
+        </div>
         
       </div>
     </main>
