@@ -4,6 +4,9 @@ import QRCodeDisplay from '@/components/QRCodeDisplay';
 export default function QRPage() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
+  const isEnabled = process.env.NEXT_PUBLIC_QR_ENABLED === 'true';
+  const targetUrl = isEnabled ? baseUrl : `${baseUrl}/disabled`;
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       <div className="max-w-md mx-auto px-4 py-8">
@@ -38,11 +41,11 @@ export default function QRPage() {
 
         {/* QRコード表示 */}
         <div className="bg-white rounded-3xl shadow-xl p-8">
-          <QRCodeDisplay url={baseUrl} />
+          <QRCodeDisplay url={targetUrl} />
 
           <div className="mt-6 p-4 bg-gray-50 rounded-xl">
             <p className="text-sm text-gray-600 text-center break-all">
-              {baseUrl}
+              {targetUrl}
             </p>
           </div>
 

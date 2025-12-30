@@ -43,6 +43,7 @@ cp .env.example .env
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/customdrink"
 ADMIN_PASSWORD="admin123"
 NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+NEXT_PUBLIC_QR_ENABLED=true
 ```
 
 ### 3. データベースのセットアップ
@@ -164,6 +165,7 @@ model Drink {
    - `DATABASE_URL`
    - `ADMIN_PASSWORD`
    - `NEXT_PUBLIC_BASE_URL`（本番URL）
+   - `NEXT_PUBLIC_QR_ENABLED`
 3. デプロイ
 
 ## カスタマイズ
