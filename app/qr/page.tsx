@@ -5,7 +5,7 @@ export default function QRPage() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
   const isEnabled = process.env.NEXT_PUBLIC_QR_ENABLED === 'true';
-  const targetUrl = isEnabled ? baseUrl : `${baseUrl}/disabled`;
+  const targetUrl = isEnabled ? baseUrl : new URL('/disabled', baseUrl).toString();
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-green-50 to-white">
